@@ -1,7 +1,10 @@
 import torch.nn as nn
 import torch.nn.functional as F
 
-class Net(nn.Module):#[128,64,10,10,10] 
+'''
+SigmoidNet - Neural Network with ﬁve hidden layers:[128,64,10,10,10] using Sigmoid.
+'''
+class Net(nn.Module):
     def __init__(self,image_size):
         super(Net, self).__init__()
         self.image_size = image_size
@@ -19,4 +22,4 @@ class Net(nn.Module):#[128,64,10,10,10]
         x = F.sigmoid(self.fc3(x))
         x = F.sigmoid(self.fc4(x))
         x = F.sigmoid(self.fc5(x))
-        return F.log_softmax(x, dim=1)#added the dim
+        return F.log_softmax(x, dim=1)
